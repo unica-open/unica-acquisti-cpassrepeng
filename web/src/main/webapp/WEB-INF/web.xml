@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ========================LICENSE_START=================================
+  CPASS Report Engine - WAR submodule
+  %%
+  Copyright (C) 2019 - 2020 CSI Piemonte
+  %%
+  SPDX-FileCopyrightText: Copyright 2019 - 2020 | CSI Piemonte
+  SPDX-License-Identifier: EUPL-1.2
+  =========================LICENSE_END==================================
+  -->
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0">
+
+  <!-- Filter -->
+  <filter>
+    <filter-name>ViewerFilter</filter-name>
+    <filter-class>org.eclipse.birt.report.filter.ViewerFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ViewerFilter</filter-name>
+    <servlet-name>ViewerServlet</servlet-name>
+    <servlet-name>EngineServlet</servlet-name>
+  </filter-mapping>
+  <!-- Listener -->
+  <listener>
+    <listener-class>org.eclipse.birt.report.listener.ViewerServletContextListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>org.eclipse.birt.report.listener.ViewerHttpSessionListener</listener-class>
+  </listener>
+  <!-- Servlet -->
+  <servlet>
+    <servlet-name>ViewerServlet</servlet-name>
+    <servlet-class>org.eclipse.birt.report.servlet.ViewerServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>EngineServlet</servlet-name>
+    <servlet-class>org.eclipse.birt.report.servlet.BirtEngineServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ReportServlet</servlet-name>
+    <servlet-class>it.csi.cpass.cpassrepeng.birt.servlet.ReportServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewerServlet</servlet-name>
+    <url-pattern>/frameset</url-pattern>
+    <url-pattern>/run</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>EngineServlet</servlet-name>
+    <url-pattern>/preview</url-pattern>
+    <url-pattern>/download</url-pattern>
+    <url-pattern>/parameter</url-pattern>
+    <url-pattern>/document</url-pattern>
+    <url-pattern>/output</url-pattern>
+    <url-pattern>/extract</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ReportServlet</servlet-name>
+    <url-pattern>/report</url-pattern>
+  </servlet-mapping>
+
+  <!-- BIRT Parameters -->
+  <context-param>
+    <param-name>BIRT_VIEWER_LOCALE</param-name>
+    <param-value>it-IT</param-value>
+  </context-param>
+  <context-param>
+    <param-name>BIRT_VIEWER_TIMEZONE</param-name>
+    <param-value>Europe/Rome</param-value>
+  </context-param>
+  <context-param>
+    <param-name>BIRT_VIEWER_WORKING_FOLDER</param-name>
+    <param-value>${birt.working.folder}</param-value>
+  </context-param>
+  <context-param>
+    <param-name>BIRT_VIEWER_DOCUMENT_FOLDER</param-name>
+    <param-value></param-value>
+  </context-param>
+  <context-param>
+    <param-name>WORKING_FOLDER_ACCESS_ONLY</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <context-param>
+    <param-name>URL_REPORT_PATH_POLICY</param-name>
+    <param-value>none</param-value>
+  </context-param>
+  <context-param>
+    <param-name>BIRT_VIEWER_IMAGE_DIR</param-name>
+    <param-value></param-value>
+  </context-param>
+  <context-param>
+    <param-name>BIRT_VIEWER_LOG_DIR</param-name>
+    <param-value></param-value>
+  </context-param>
+  <context-param>
+    <param-name>BIRT_VIEWER_LOG_LEVEL</param-name>
+    <param-value>WARNING</param-value>
+  </context-param>
+  <context-param>
+    <param-name>BIRT_VIEWER_SCRIPTLIB_DIR</param-name>
+    <param-value></param-value>
+  </context-param>
+  <context-param>
+    <param-name>BIRT_RESOURCE_PATH</param-name>
+    <param-value></param-value>
+  </context-param>
+  <context-param>
+    <param-name>BIRT_VIEWER_MAX_ROWS</param-name>
+    <param-value></param-value>
+  </context-param>
+  <context-param>
+    <param-name>BIRT_VIEWER_MAX_CUBE_ROWLEVELS</param-name>
+    <param-value></param-value>
+  </context-param>
+  <context-param>
+    <param-name>BIRT_VIEWER_MAX_CUBE_COLUMNLEVELS</param-name>
+    <param-value></param-value>
+  </context-param>
+  <context-param>
+    <param-name>BIRT_VIEWER_CUBE_MEMORY_SIZE</param-name>
+    <param-value></param-value>
+  </context-param>
+  <context-param>
+    <param-name>BIRT_VIEWER_CONFIG_FILE</param-name>
+    <param-value>WEB-INF/viewer.properties</param-value>
+  </context-param>
+  <context-param>
+    <param-name>BIRT_VIEWER_PRINT_SERVERSIDE</param-name>
+    <param-value>OFF</param-value>
+  </context-param>
+  <context-param>
+    <param-name>HTML_ENABLE_AGENTSTYLE_ENGINE</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <context-param>
+    <param-name>BIRT_FILENAME_GENERATOR_CLASS</param-name>
+    <param-value>it.csi.cpass.cpassrepeng.birt.util.config.ReportFilenameGeneratorDelegate</param-value>
+  </context-param>
+
+  <welcome-file-list>
+    <welcome-file>/index.html</welcome-file>
+  </welcome-file-list>
+</web-app>
