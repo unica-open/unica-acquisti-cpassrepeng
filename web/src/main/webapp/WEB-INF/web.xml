@@ -3,7 +3,7 @@
   ========================LICENSE_START=================================
   CPASS Report Engine - WAR submodule
   %%
-  Copyright (C) 2019 - 2020 CSI Piemonte
+  Copyright (C) 2019 - 2025 CSI Piemonte
   %%
   SPDX-FileCopyrightText: Copyright 2019 - 2020 | CSI Piemonte
   SPDX-License-Identifier: EUPL-1.2
@@ -45,6 +45,14 @@
     <servlet-name>ReportServlet</servlet-name>
     <servlet-class>it.csi.cpass.cpassrepeng.birt.servlet.ReportServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>SingleReportServlet</servlet-name>
+    <servlet-class>it.csi.cpass.cpassrepeng.birt.servlet.SingleReportServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MultiReportServlet</servlet-name>
+    <servlet-class>it.csi.cpass.cpassrepeng.birt.servlet.MultiReportServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>ViewerServlet</servlet-name>
     <url-pattern>/frameset</url-pattern>
@@ -61,7 +69,15 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ReportServlet</servlet-name>
+    <url-pattern>/report-old</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SingleReportServlet</servlet-name>
     <url-pattern>/report</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MultiReportServlet</servlet-name>
+    <url-pattern>/multi-report</url-pattern>
   </servlet-mapping>
 
   <!-- BIRT Parameters -->

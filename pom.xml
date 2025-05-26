@@ -22,7 +22,7 @@
   </licenses>
 
   <properties>
-    <revision>1.0.0</revision>
+    <revision>2.0.0</revision>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- Compiler configuration -->
@@ -35,9 +35,10 @@
     <!-- Dependencies configuration -->
     <dependencies.version.birt>4.4.2</dependencies.version.birt>
     <dependencies.version.birt-viewservlets>4.5.0</dependencies.version.birt-viewservlets>
+    <dependencies.version.gson>2.8.9</dependencies.version.gson>
     <dependencies.version.jboss.bom>17.0.0.Final</dependencies.version.jboss.bom>
     <dependencies.version.jee>8.0.1</dependencies.version.jee>
-    <dependencies.version.log4j>2.13.3</dependencies.version.log4j>
+    <dependencies.version.log4j>2.17.0</dependencies.version.log4j>
 
     <!-- Module configuration -->
     <module.ear.context-root.war>/cpassrepeng</module.ear.context-root.war>
@@ -119,6 +120,11 @@
         <groupId>org.eclipse.birt.runtime</groupId>
         <artifactId>viewservlets</artifactId>
         <version>${dependencies.version.birt-viewservlets}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>${dependencies.version.gson}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -241,9 +247,15 @@
       </properties>
     </profile>
     <profile>
-      <id>dev-int-01</id>
+      <id>dev-coto-01</id>
       <properties>
-        <build.profile.id>dev-int-01</build.profile.id>
+        <build.profile.id>dev-coto-01</build.profile.id>
+      </properties>
+    </profile>
+    <profile>
+      <id>dev-mult-01</id>
+      <properties>
+        <build.profile.id>dev-mult-01</build.profile.id>
       </properties>
     </profile>
     <profile>
@@ -259,9 +271,15 @@
       </properties>
     </profile>
     <profile>
-      <id>test-int-01</id>
+      <id>test-coto-01</id>
       <properties>
-        <build.profile.id>test-int-01</build.profile.id>
+        <build.profile.id>test-coto-01</build.profile.id>
+      </properties>
+    </profile>
+    <profile>
+      <id>test-mult-01</id>
+      <properties>
+        <build.profile.id>test-mult-01</build.profile.id>
       </properties>
     </profile>
     <profile>
@@ -271,15 +289,21 @@
       </properties>
     </profile>
     <profile>
-      <id>prod-int-01</id>
+      <id>prod-mult-01</id>
       <properties>
-        <build.profile.id>prod-int-01</build.profile.id>
+        <build.profile.id>prod-mult-01</build.profile.id>
       </properties>
     </profile>
     <profile>
       <id>prod-cmto-01</id>
       <properties>
         <build.profile.id>prod-cmto-01</build.profile.id>
+      </properties>
+    </profile>
+    <profile>
+      <id>prod-coto-01</id>
+      <properties>
+        <build.profile.id>prod-coto-01</build.profile.id>
       </properties>
     </profile>
     <profile>

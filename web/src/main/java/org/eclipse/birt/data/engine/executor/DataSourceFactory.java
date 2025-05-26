@@ -2,7 +2,7 @@
  * ========================LICENSE_START=================================
  * CPASS Report Engine - WAR submodule
  * %%
- * Copyright (C) 2019 - 2020 CSI Piemonte
+ * Copyright (C) 2019 - 2025 CSI Piemonte
  * %%
  * SPDX-FileCopyrightText: Copyright 2019 - 2020 | CSI Piemonte
  * SPDX-License-Identifier: EUPL-1.2
@@ -31,12 +31,12 @@ public class DataSourceFactory implements IDataSourceFactory {
 	 * being constructed by JVM, will be locked by current thread until the
 	 * finish of construction.
 	 */
-	private static volatile DataSourceFactory instance = null;
-
+	private static DataSourceFactory instance = null;
 	/**
 	 * Retrieves the factory. Lazy loaded
 	 * @return the factory
 	 */
+	/* vecchia versione prima di sonar
 	public static IDataSourceFactory getFactory() {
 		if (instance == null) {
 			synchronized (DataSourceFactory.class) {
@@ -47,7 +47,35 @@ public class DataSourceFactory implements IDataSourceFactory {
 		}
 		return instance;
 	}
+	 */
+	public static synchronized IDataSourceFactory getFactory() {
+		if (instance == null) {
+			instance = new DataSourceFactory();
+		}
+		return instance;
+	}
+	
+	/*
+	public class SafeLazyInitialization {
+    private static Resource resource;
 
+    public static synchronized Resource getInstance() {
+        if (resource == null)
+            resource = new Resource();
+        return resource;
+    }
+
+    static class Resource {
+    }
+}
+	 */
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public IDataSource getDataSource(String driverName, Map connectionProperties, DataEngineSession session) throws DataException {
 		if (ODA_DRIVER_NAME.equals(driverName)) {

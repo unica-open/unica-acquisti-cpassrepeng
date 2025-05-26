@@ -2,7 +2,7 @@
  * ========================LICENSE_START=================================
  * CPASS Report Engine - WAR submodule
  * %%
- * Copyright (C) 2019 - 2020 CSI Piemonte
+ * Copyright (C) 2019 - 2025 CSI Piemonte
  * %%
  * SPDX-FileCopyrightText: Copyright 2019 - 2020 | CSI Piemonte
  * SPDX-License-Identifier: EUPL-1.2
@@ -18,8 +18,7 @@ import java.util.Properties;
  */
 public class ReportDataSourceConfig {
 
-	private static volatile Properties config = null;
-
+	private static Properties config = null;
 	/**
 	 * Reads a property from the configuration file
 	 * @param key the key to read
